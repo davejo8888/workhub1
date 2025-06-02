@@ -12,20 +12,11 @@
 
 // 1. Define ROOT_PATH for consistent includes.
 // This assumes index.php is in your main application directory (e.g., workhub2/).
-if (!defined('ROOT_PATH')) {
-    define('ROOT_PATH', __DIR__);
+iif (!defined('ROOT_PATH')) {
+    define('ROOT_PATH', dirname(__DIR__)); // Points to the parent directory (workhub2/)
 }
+require_once ROOT_PATH . '/auth/session.php'; // Ensures everything is loaded
 
-// 2. Include the main session management and initialization file.
-// auth/session.php will handle:
-// - Setting session ini directives
-// - Including 'includes/config.php' (for constants like SITE_NAME, SITE_URL, ASSETS_URL)
-// - Including 'includes/functions.php' (for general functions like redirect())
-// - Including 'includes/auth.php' (for auth functions like isLoggedIn(), getCurrentUser())
-// - Setting session cookie parameters
-// - Starting the session (session_start())
-// - CSRF token generation and session validation.
-require_once ROOT_PATH . '/auth/session.php';
 
 // 3. Check if the user is already logged in.
 // isLoggedIn() and redirect() are now available because auth/session.php included the necessary files.
